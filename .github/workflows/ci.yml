@@ -10,17 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Build step
+      - name: Build
         run: echo "Build successful"
 
-      - name: Test step
+      - name: Test
         run: echo "Tests passed"
 
-      - name: Slack Notification
-        if: success()
+      - name: Notify Slack
+        if: always()
         run: |
           curl -X POST -H 'Content-type: application/json' \
           --data '{"text":"✅ Build Successful for devops-webapp"}' \
